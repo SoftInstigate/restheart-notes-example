@@ -67,6 +67,7 @@ angular.module('notes')
                 $scope.deleteNote = function () {
                     ApiRestangular.one("notes", $scope.selected._id.$oid).remove(null, {"If-Match": $scope.selected._etag.$oid}).then(function () {
                         $scope.loadNotes();
+                        $scope.selected = null;
                     });
                 };
 
