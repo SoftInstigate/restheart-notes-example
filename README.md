@@ -1,6 +1,11 @@
 # restheart-notes-example
 
-an example notes application built with RESTHeart, AngularJS and restangular
+An example notes application built with RESTHeart, AngularJS and restangular
+
+## Clone this repository locally
+
+	$ git clone git@github.com:SoftInstigate/restheart-notes-example.git
+	$ cd restheart-notes-example
 
 ## Install mongodb and RESTHeart
 
@@ -42,9 +47,9 @@ We will be using the RESTHeart API with [httpie](http://httpie.org) (you can als
 
 ## Start the Web app
 
-Install Node.js for your system [https://nodejs.org](https://nodejs.org)
+First of all you have to install Node.js for your system [https://nodejs.org](https://nodejs.org).
 
-Check you have the latest `npm` installed
+Then check you have the latest `npm` installed
 
 	npm update -g npm
 
@@ -54,7 +59,11 @@ Install [Grunt](http://gruntjs.com/getting-started) and [Bower](http://bower.io)
 
 Run `bower install`. If Bower asks you for the AngularJS version, choose 1.3.0.
 
-Run `grunt` for building and `grunt serve` for preview, after a while it should starts the default browser at [http://localhost:9000/#/signin](http://localhost:9000/#/signin)
+	bower install
+
+Finally run `grunt serve` for preview, after a while it should starts the default browser at [http://localhost:9000/#/signin](http://localhost:9000/#/signin)
+
+	grunt serve
 
 To login in the Web app, you can use the **admin** user with password **changeit**
 
