@@ -40,11 +40,23 @@ We will be using the RESTHeart API with [httpie](http://httpie.org) (you can als
 	...
 
 
-## Start the web app
+## Start the Web app
 
-Run `grunt` for building and `grunt serve` for preview.
+Install Node.js for your system [https://nodejs.org](https://nodejs.org)
 
-To login in the web app, you can use the **admin** user with password **changeit**
+Check you have the latest `npm` installed
+
+	npm update -g npm
+
+Install [Grunt](http://gruntjs.com/getting-started) and [Bower](http://bower.io) tools
+
+	npm install -g bower grunt-cli
+
+Run `bower install`. If Bower asks you for the AngularJS version, choose 1.3.0.
+
+Run `grunt` for building and `grunt serve` for preview, after a while it should starts the default browser at [http://localhost:9000/#/signin](http://localhost:9000/#/signin)
+
+To login in the Web app, you can use the **admin** user with password **changeit**
 
 For more information on RESTHeart security setting refer to the [documentation](http://restheart.org/docs/security.html).
 
