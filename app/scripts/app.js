@@ -9,6 +9,10 @@
  * Main module of the application.
  */
 
+/*
+ * The below IP is valid for Boot2Docker only, otherwise it must be:
+ * var RESTHEART_URL = "http://localhost:8080";
+ */
 var RESTHEART_URL = "http://192.168.59.103:8080";
 
 angular
