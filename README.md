@@ -29,10 +29,13 @@ setting the ip (in this case 192.168.59.103) with the one of the restheart conta
 
 We will be using the RESTHeart API with [httpie](http://httpie.org) (you can also use another http client such as curl)
 
-	$ http -a admin:changeit PUT http://192.168.59.104:8080/rhnedb descr="restheart notes example db"
+	$ http -a admin:changeit PUT http://192.168.59.103:8080/rhnedb descr="restheart notes example db"
+	
 	HTTP/1.1 201 Created
 	...
-	$ http -a admin:changeit PUT http://192.168.59.104:8080/rhnedb/notes descr="notes collection"
+	
+	$ http -a admin:changeit PUT http://192.168.59.103:8080/rhnedb/notes descr="notes collection"
+	
 	HTTP/1.1 201 Created
 	...
 
