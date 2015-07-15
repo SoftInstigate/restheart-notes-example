@@ -5808,7 +5808,10 @@ body {
   background-color: transparent;
   height: 100%; }
 
-container {
+.container-fluid {
+  height: 100%; }
+
+textarea.form-control {
   height: 100%; }
 
 .browsehappy {
@@ -5819,6 +5822,21 @@ container {
 
 body {
   padding: 0; }
+
+.b-b {
+  border-bottom: solid;
+  border-bottom-color: #e5e5e5;
+  border-bottom-width: 1px; }
+
+.b-l {
+  border-left: solid;
+  border-left-color: #e5e5e5;
+  border-left-width: 1px; }
+
+.b-r {
+  border-right: solid;
+  border-right-color: #e5e5e5;
+  border-right-width: 1px; }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -5861,6 +5879,12 @@ body {
 .form-control {
   border-color: #cfdadd;
   border-radius: 2px; }
+
+a.list-group-item.hover {
+  background-color: #f6f8f8; }
+
+.h-f {
+  height: 100%; }
 
 .btn {
   font-weight: 500;
@@ -6181,6 +6205,12 @@ body {
 
 .text-2x {
   font-size: 2em; }
+
+.text-sm {
+  font-size: 0.7em; }
+
+.text-ellipsis {
+  text-overflow: ellipsis; }
 
 .b-l-dark {
   border-left-color: #3a3f51; }

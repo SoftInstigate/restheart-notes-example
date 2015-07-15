@@ -83,7 +83,7 @@ angular.module('notes')
                         return dirties[note._id.$oid];
                 };
 
-                $scope.loadNotes();
+                $scope.loadNotes(true);
             }]);
 
 function getFilter(search) {
