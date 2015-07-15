@@ -16,17 +16,22 @@ However the quickest way is using **docker**:
 	$ docker pull mongo
 	$ docker pull softinstigate/restheart
 	$ docker run -d --name mongodb mongo:3.0
-	$ docker run -d -p 27017:27017 --name mongodb -v <db-dir>:/data/db mongo:3.0
+	$ docker run -d -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart
 
-After the docker mongodb and restheart containers are started, you might need to adjust the RESTHEART_URL variable value in the following file:
+After the docker mongodb and restheart containers are started in background, you can check the logs by issuing the `docker logs` command
+
+	$ docker logs mongodb
+	$ docker logs restheart
+
+Then you might need to adjust the RESTHEART_URL variable value in the following file:
 
 	app/scripts/app.js
 	
-edit this line:
+Edit this line:
 
 	var RESTHEART_URL = "http://192.168.59.103:8080";
 
-setting the ip (in this case 192.168.59.103) with the one of the restheart container; it might be the localhost or, if you are using boot2docker, you can retrive it with the command:
+Setting the IP (in this case 192.168.59.103, which should be the one with boot2docker) with the one of the restheart container; it might be the `localhost` or, if you are using boot2docker, you can retrive it with the command:
 
 	boot2docker ip
 
