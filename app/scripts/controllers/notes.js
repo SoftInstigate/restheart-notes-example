@@ -47,7 +47,7 @@ angular.module('notes')
                     };
 
                     ApiRestangular.all("notes").post(note).then(function () {
-                        $scope.loadNotes();
+                        $scope.loadNotes(true);
                     });
                 };
 
@@ -66,8 +66,7 @@ angular.module('notes')
 
                 $scope.deleteNote = function () {
                     ApiRestangular.one("notes", $scope.selected._id.$oid).remove(null, {"If-Match": $scope.selected._etag.$oid}).then(function () {
-                        $scope.loadNotes();
-                        $scope.selected = null;
+                        $scope.loadNotes(true);
                     });
                 };
 

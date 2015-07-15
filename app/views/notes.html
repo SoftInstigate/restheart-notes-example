@@ -1,63 +1,38 @@
-<div class="app-content-body app-content-full fade-in-up">
-    <!-- hbox layout -->
-    <div class="hbox hbox-auto-xs bg-light">
-        <!-- column -->
-        <div class="col w-lg lt b-r">
-            <div class="vbox">
-                <div class="wrapper">
-                    <a href class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="createNote()">New</a>
-                    <i ng-show="isLoading" class="glyphicon glyphicon-refresh gly-spin pull-right m-r-sm"></i>
-                    <div class="h4">Notes</div>
+<div class="container-fluid" style="height:100%;"> 
+    <div class="row">
+        <div class="col-md-3">
+            <div class="wrapper">
+                <a href class="pull-right btn btn-sm btn-info" ng-click="createNote()">New</a>
+                <i ng-show="isLoading" class="glyphicon glyphicon-refresh gly-spin pull-right m-r-sm"></i>
+                <div class="h4">Notes</div>
+            </div>
+            <div class="wrapper">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" class="form-control" placeholder="search" ng-model="query">
                 </div>
-                <div class="wrapper b-t m-t-xxs">
-                    <div class="input-group">
-                        <span class="input-group-addon input-sm"><i class="glyphicon glyphicon-search"></i></span>
-                        <input type="text" class="form-control input-sm" placeholder="search" ng-model="query">
-                    </div>
-                </div>
-                <div class="row-row">
-                    <div class="cell scrollable hover">
-                        <div class="cell-inner">
-                            <div class="padder">
-                                <div class="list-group">
-                                    <a ng-repeat="n in notes" class="list-group-item b-l-{{n.color}} b-l-3x hover-anchor" ng-class="n._id.$oid == selected._id.$oid ? 'hover': ''" ng-click="selectNote(n)">
-                                        <i ng-show="isDirty(n)" class="glyphicon glyphicon-save pull-right m-r-sm"></i>
-                                        <span class="block text-ellipsis">{{ n.content ? n.content : 'Untitled' }}</span>
-                                        <small class="text-muted">{{ n.date | date:'MMM-dd-yyyy H:mm'}}</small>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="wrapper">
+                <div class="list-group">
+                    <a ng-repeat="n in notes" class="list-group-item b-l-{{n.color}}" ng-class="n._id.$oid == selected._id.$oid ? 'hover': ''" ng-click="selectNote(n)">
+                        <i ng-show="isDirty(n)" class="glyphicon glyphicon-save pull-right m-r-sm"></i>
+                        <span class="block text-ellipsis">{{ n.content ? n.content : 'Untitled' }}</span>
+                        <small class="text-muted">{{ n.date | date:'MMM-dd-yyyy H:mm'}}</small>
+                    </a>
                 </div>
             </div>
         </div>
-        <!-- /column -->
 
-        <!-- column -->
-        <div class="col">
-            <div class="vbox">
-                <div class="wrapper bg-light lt b-b">
-                    <span class="text-muted">Created on:</span> <span>{{ selected.date | date:'MMM-dd-yyyy H:mm' }}</span>
-                    <div class="m-l inline dropdown">
-                        <a class="dropdown-toggle v-middle pos-rlt inline bg-{{selected.color}}" style="width:16px;height:16px;top:-2px"></a>
-                    </div>
-                    <div class="pull-right">
-                        <a href class="pull-right btn btn-sm btn-danger m-t-n-xs" ng-click="deleteNote()">Delete</a>
-                        <a href class="pull-right btn btn-sm btn-info m-r-xs m-t-n-xs" ng-show="isDirty(selected)" ng-click="updateNote()">Save</a>
-                    </div>
-                </div>
-                <div class="row-row">
-                    <div class="cell">
-                        <div class="cell-inner">
-                            <textarea ng-disabled="selected ? false : true" class="form-control no-radius no-border no-bg wrapper-lg text-md" style="height:100%;" ng-model="selected.content" ng-change="setDirty()">
-                            </textarea>
-                        </div>
-                    </div>
+        <div class="col-md-9" style="height:100%;">
+            <div class="wrapper m-b-xl">
+                <span class="text-muted">Created on:</span> <span>{{ selected.date | date:'MMM-dd-yyyy H:mm' }}</span>
+                <div class="pull-right">
+                    <a href class="pull-right btn btn-sm btn-danger m-l-sm" ng-click="deleteNote()">Delete</a>
+                    <a href class="pull-right btn btn-sm btn-info" ng-show="isDirty(selected)" ng-click="updateNote()">Save</a>
                 </div>
             </div>
+            <textarea ng-disabled="selected ? false : true" class="form-control no-radius no-borders no-bg wrapper-lg text-md" style="height:100%;" ng-model="selected.content" ng-change="setDirty()">
+            </textarea>
         </div>
-        <!-- /column -->
     </div>
-    <!-- /hbox layout -->
 </div>
