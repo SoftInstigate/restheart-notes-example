@@ -127,8 +127,6 @@ angular
                         extractedData = data;
                     }
 
-                    //console.debug("**** " + JSON.stringify(extractedData, null, 2));
-
                     return extractedData;
                 });
                 RestangularProvider.setDefaultHeaders({'Accept': 'application/hal+json', 'Content-Type': 'application/json', 'No-Auth-Challenge': 'true'});
@@ -159,13 +157,9 @@ angular
             };
 
             this.clearAuthInfo = function () {
-                var restheartUrl = localStorageService.get('restheartUrl');
                 var redirected = localStorageService.get('redirected');
 
                 localStorageService.clearAll();
-
-                // avoid restheartUrl to be deleted
-                localStorageService.set('restheartUrl', restheartUrl);
 
                 // avoid redirected to be deleted
                 localStorageService.set('redirected', redirected);

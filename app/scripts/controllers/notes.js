@@ -1,5 +1,5 @@
 angular.module('notes')
-        .controller('NotesCtrl', ['$scope', 'ApiRestangular', '_', function ($scope, ApiRestangular, _) {
+        .controller('NotesCtrl', ['$scope', 'ApiRestangular', 'AuthService', '_', function ($scope, ApiRestangular, AuthService, _) {
                 $scope.colors = ['primary', 'info', 'success', 'warning', 'danger', 'dark'];
                 $scope.selected;
                 var dirties = {};
@@ -20,7 +20,7 @@ angular.module('notes')
                         sort_by: "-date"
                     };
 
-                    var filter = getFilter($scope.query);
+                    var filter = getFilter($scope.query, AuthService.getSavedUserid());
 
                     if (angular.isDefined(filter)) {
                         apiOptions.filter = filter;
@@ -43,7 +43,8 @@ angular.module('notes')
                     var note = {
                         content: 'New note',
                         color: $scope.colors[Math.floor((Math.random() * 3))],
-                        date: Date.now()
+                        date: Date.now(),
+                        user: AuthService.getSavedUserid()
                     };
 
                     ApiRestangular.all("notes").post(note).then(function () {
@@ -100,16 +101,16 @@ angular.module('notes')
                         return false;
                     }
                     
-                    console.log("cccc " + Object.keys(dirties).length);
-                    
                     return Object.keys(dirties).length > 0;
                 };
 
                 $scope.loadNotes(true);
             }]);
 
-function getFilter(search) {
-    if (angular.isDefined(search)) {
-        return {'content': {$regex: '.*' + search + '.*'}};
+function getFilter(query, userid) {
+    if (angular.isDefined(query)) {
+        return {'$and': [{'user': userid}, {'content': {$regex: '.*' + query + '.*' }}]};
+    } else {
+        return {'user': userid};
     }
 }
