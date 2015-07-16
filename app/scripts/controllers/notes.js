@@ -109,7 +109,7 @@ angular.module('notes')
 
 function getFilter(query, userid) {
     if (angular.isDefined(query)) {
-        return {'$and': [{'user': userid}, {'content': {$regex: '.*' + query + '.*' }}]};
+        return {'$and': [{'user': userid}, {'content': {$regex: '(?i).*' + query + '.*' }}]};
     } else {
         return {'user': userid};
     }
