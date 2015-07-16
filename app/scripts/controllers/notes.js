@@ -113,39 +113,3 @@ function getFilter(search) {
         return {'content': {$regex: '.*' + search + '.*'}};
     }
 }
-
-function patchLibraryMaterial($scope, $log, toaster, material, data, retryOnConflict, noToasterOnSuccess) {
-    if (angular.isUndefined(noToasterOnSuccess)) {
-        noToasterOnSuccess = false;
-    }
-
-    material.patch(data).then(function () {
-        // refresh data (including etag)
-        $scope.loadMaterials($scope.tableState);
-
-        if (angular.isDefined(toaster) && toaster !== null && !noToasterOnSuccess)
-            toaster.pop('success', "Yeah", "Material updated.");
-    }, function (response) {
-        // reset data
-        var updatedMaterialPromise = material.get();
-
-        $scope.loadMaterials($scope.tableState);
-
-        if (response.status === 412) {
-            $log.warn("ETag does not match (precondition failed 412) on patching material " + material._id + ", retring " + retryOnConflict + " times");
-        }
-
-        if (response.status === 412 && angular.isNumber(retryOnConflict) && retryOnConflict > 0) {
-            updatedMaterialPromise.then(function (updatedMaterial) {
-                patchLibraryMaterial($scope, $log, toaster, updatedMaterial, data, retryOnConflict - 1, noToasterOnSuccess);
-            });
-        }
-        else if (angular.isDefined(toaster) && toaster !== null) {
-            var errMsg = "Error: please try again.";
-            errMsg = errMsg + (angular.isDefined(response.message) ? " " + response.message : "");
-            errMsg = errMsg + " (http response code: " + response.status + ")";
-            toaster.pop('error', "Urgh", errMsg);
-            $log.error("error patching material " + material._id + "; data:" + JSON.stringify(data) + "; response: " + JSON.stringify(response));
-        }
-    });
-}
