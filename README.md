@@ -1,6 +1,6 @@
 # restheart-notes-example
 
-An example notes application built with RESTHeart, AngularJS and restangular
+An example notes application built with RESTHeart, AngularJS and MongoDB.
 
 ## Clone this repository locally
 
