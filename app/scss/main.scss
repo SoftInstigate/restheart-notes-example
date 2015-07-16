@@ -3,9 +3,38 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+html, body, .override .col-md-3, .override .col-md-9 {
+    height: 100%; 
+}
+
+.override .wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%; 
+}
+
+.override .col-md-3 {
+    float: left;
+    position: static;
+    overflow: auto; 
+}
+
+.override .col-md-9 {
+    position: static;
+    overflow: auto; 
+}
+
+textarea {
+    border: 0 none white;
+    overflow-y: auto;
+    padding: 0;
+    outline: none;
+    background-color: #f0f3f4;
+    resize: none;
+}
+
 html {
     background-color: #f0f3f4;
-    height: 100%;
 }
 
 body {
@@ -15,15 +44,11 @@ body {
     line-height: 1.42857143;
     color: #58666e;
     background-color: transparent;
-    height: 100%;
+    padding: 0;
 }
 
-.container-fluid {
-    height: 100%;
-}
-
-textarea.form-control {
-  height: 100%;
+.padder {
+    padding: 15px;
 }
 
 .browsehappy {
@@ -33,14 +58,16 @@ textarea.form-control {
     padding: 0.2em 0;
 }
 
-body {
-    padding: 0;
-}
-
 .b-b {
     border-bottom: solid; 
     border-bottom-color: #e5e5e5; 
     border-bottom-width: 1px;
+}
+
+.b-t {
+    border-top: solid; 
+    border-top-color: #e5e5e5; 
+    border-top-width: 1px;
 }
 
 .b-l {
@@ -86,10 +113,6 @@ body {
     z-index: 1005;
 }
 
-.wrapper {
-    padding: 15px;
-}
-
 .input-group {
     border-collapse: separate;
     display: table;
@@ -107,11 +130,7 @@ body {
 }
 
 a.list-group-item.hover {
-  background-color: #f6f8f8;
-}
-
-.h-f {
-    height: 100%;
+    background-color: #f6f8f8;
 }
 
 .btn {
@@ -186,12 +205,9 @@ a.list-group-item.hover {
     border-radius: 0 !important;
 }
 
-.no-border {
-    border-width: 1px 0;
-}
-
-.no-borders {
-    border: none;
+.no-border, .no-borders {
+    border-color:transparent;
+    border-width:0
 }
 
 .list-group.no-borders .list-group-item {
@@ -530,37 +546,41 @@ a.list-group-item.hover {
 }
 
 .text-sm {
-  font-size: 0.7em; }
+    font-size: 0.7em; }
+
+.block {
+    display: block;
+}
 
 .text-ellipsis {
-  text-overflow: ellipsis; }
+    text-overflow: ellipsis; }
 
 .b-l-dark {
-  border-left-color: #3a3f51;
+    border-left-color: #3a3f51;
 }
 
 .b-l-black {
-  border-left-color: #3a3f51;
+    border-left-color: #3a3f51;
 }
 
 .b-l-primary {
-  border-left-color: #7266ba;
+    border-left-color: #7266ba;
 }
 
 .b-l-success {
-  border-left-color: #27c24c;
+    border-left-color: #27c24c;
 }
 
 .b-l-info {
-  border-left-color: #23b7e5;
+    border-left-color: #23b7e5;
 }
 
 .b-l-warning {
-  border-left-color: #fad733;
+    border-left-color: #fad733;
 }
 
 .b-l-danger {
-  border-left-color: #f05050;
+    border-left-color: #f05050;
 }
 
 .container-narrow > hr {

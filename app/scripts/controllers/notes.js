@@ -64,6 +64,18 @@ angular.module('notes')
                     });
                 };
 
+                $scope.getTitle = function (n) {
+                    if (angular.isUndefined(n) || angular.isUndefined(n.content) || n.content.length === 0) {
+                        return "Untitled";
+                    } else {
+                        if (n.content.length > 30) {
+                            return n.content.substring(0, 30) + "...";
+                        } else {
+                            return n.content;
+                        }
+                    }
+                };
+
                 $scope.deleteNote = function () {
                     ApiRestangular.one("notes", $scope.selected._id.$oid).remove(null, {"If-Match": $scope.selected._etag.$oid}).then(function () {
                         $scope.loadNotes(true);
@@ -88,7 +100,7 @@ angular.module('notes')
 
 function getFilter(search) {
     if (angular.isDefined(search)) {
-        return {'content': {$regex: '(?i)^.*' + search + '.*'}};
+        return {'content': {$regex: '.*' + search + '.*'}};
     }
 }
 

@@ -1,46 +1,31 @@
-<div class="container-fluid"> 
-    <div class="row b-b">
-        <div class="col-md-3 b-r">
-            <div class="wrapper">
-                <a href class="pull-right btn btn-sm btn-info" ng-click="createNote()">New</a>
-                <i ng-show="isLoading" class="glyphicon glyphicon-refresh gly-spin pull-right m-r-sm"></i>
-                <div class="h4">Notes</div>
+<div class="row">
+    <div class="wrapper">
+        <div class="col-md-3 b-r b-t">
+            <div class="input-group padder">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" class="form-control" placeholder="search" ng-model="query">
             </div>
-        </div>
-        <div class="col-md-9">
-            <div class="wrapper">
-                <span class="text-muted">Created on:</span> <span>{{ selected.date | date:'MMM-dd-yyyy H:mm' }}</span>
-                <div class="pull-right">
-                    <a href class="pull-right btn btn-sm btn-danger m-l-sm" ng-click="deleteNote()">Delete</a>
-                    <a href class="pull-right btn btn-sm btn-info" ng-show="isDirty(selected)" ng-click="updateNote()">Save</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row h-f">
-        <div class="col-md-3 b-r">
-            <div class="wrapper">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-                    <input type="text" class="form-control" placeholder="search" ng-model="query">
-                </div>
-            </div>
-            <div class="wrapper">
-                <div class="list-group">
-                    <a ng-repeat="n in notes" class="list-group-item b-l-{{n.color}}" ng-class="n._id.$oid == selected._id.$oid ? 'hover': ''" ng-click="selectNote(n)">
-                        <i ng-show="isDirty(n)" class="glyphicon glyphicon-save pull-right m-r-sm"></i>
-                        <span class="block text-ellipsis">{{ n.content ? n.content : 'Untitled' }}</span><br>
-                        <span class="text-muted text-sm">{{ n.date | date:'MMM-dd-yyyy H:mm'}}</span>
-                    </a>
-                </div>
+            <div class="list-group padder">
+                <a ng-repeat="n in notes" class="list-group-item b-l-{{n.color}}" ng-class="n._id.$oid == selected._id.$oid ? 'hover': ''" ng-click="selectNote(n)">
+                    {{getTitle(n)}}
+                    <br>
+                    <i ng-show="isDirty(n)" class="glyphicon glyphicon-save pull-right m-r-sm"></i>
+                    <span class="text-muted text-sm">{{ n.date | date:'MMM-dd-yyyy H:mm'}}</span>
+                </a>
             </div>
         </div>
 
-        <div class="col-md-9 h-f">
-            <div class="wrapper h-f">
-                <textarea ng-disabled="selected ? false : true" class="form-control no-radius no-borders no-bg wrapper-lg text-md h-f" ng-model="selected.content" ng-change="setDirty()">
-                </textarea>
+        <div class="col-md-9 b-t">
+            <div class="b-b padder">
+                <span class="text-muted">Created on:</span> <span>{{ selected.date | date:'MMM-dd-yyyy H:mm' }}</span>
+                <div class="pull-right">
+                    <a href="#" class="pull-right btn btn-sm btn-danger m-l-sm" ng-click="deleteNote()">Delete</a>
+                    <a href="#" class="pull-right btn btn-sm btn-info m-l-sm" ng-click="createNote()">New</a>
+                    <a href="#" class="pull-right btn btn-sm btn-warning m-l-sm" ng-show="isDirty(selected)" ng-click="updateNote()">Save</a>
+                </div>
             </div>
+
+            <textarea ng-disabled="selected ? false : true" class="padder no-radius no-borders no-border no-bg text-md" ng-model="selected.content" ng-change="setDirty()" style="width:100%; height: 100%"></textarea>
         </div>
     </div>
 </div>

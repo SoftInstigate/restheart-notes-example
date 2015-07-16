@@ -1,24 +1,22 @@
 <div class="container m-t-lg">
-    <div class="row">
-        <div class="col-md-offset-2 col-md-6">
-            <div class="text-center m-b-lg">
-                <h1>Notes</h1>
-                <p>You can try with user <span style="font-style: italic">admin</span> with password <span style="font-style: italic">changeit</span></p>
-            </div>
-
-            <div class="m-b text-center text-warning" ng-if="redirectedWhy === 'expired'">
-                Session expired.
-            </div>
-            <div class="m-b text-center text-warning" ng-if="redirectedWhy === 'notAuthenticated'">
-                You need to authenticate first.
-            </div>
-            <form >
-                <div class="m-b text-center text-warning" ng-if="authError" ng-bind="authError">
-                </div>
-                <input type="id" placeholder="id" class="form-control m-b-sm" ng-model="user.id" required>
-                <input type="password" placeholder="Password" class="form-control m-b-sm" ng-model="user.password" required>
-                <button type="submit" class="btn btn-primary pull-right" ng-click="signin()" ng-disabled='form.$invalid'>Signin</button>
-            </form>
+    <div class="col-md-offset-2 col-md-6">
+        <div class="text-center m-b-lg">
+            <h1>Notes</h1>
+            <p>You can try with user <span style="font-style: italic">admin</span> and password <span style="font-style: italic">changeit</span></p>
         </div>
+
+        <div class="m-b text-center text-warning" ng-if="redirectedWhy === 'expired'">
+            Session expired.
+        </div>
+        <div class="m-b text-center text-warning" ng-if="redirectedWhy === 'notAuthenticated'">
+            You need to authenticate first.
+        </div>
+        <form >
+            <div class="m-b text-center text-warning" ng-if="authError" ng-bind="authError">
+            </div>
+            <input type="id" placeholder="id" class="form-control m-b-sm" ng-model="user.id" required>
+            <input type="password" placeholder="Password" class="form-control m-b-sm" ng-model="user.password" required>
+            <button type="submit" class="btn btn-primary pull-right" ng-click="signin()" ng-disabled='form.$invalid'>Signin</button>
+        </form>
     </div>
 </div>
