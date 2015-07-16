@@ -43,7 +43,7 @@ angular.module('notes')
                     var note = {
                         content: 'New note',
                         color: $scope.colors[Math.floor((Math.random() * 3))],
-                        date: Date.now(),
+                        date: {'$date': Date.now()},
                         user: AuthService.getSavedUserid()
                     };
 
