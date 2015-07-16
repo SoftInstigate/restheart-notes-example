@@ -59,7 +59,7 @@ angular.module('notes')
                     $scope.selected.date = Date.now();
 
                     $scope.selected.put(null, {"If-Match": $scope.selected._etag.$oid}).then(function (res) {
-                        dirties[$scope.selected._id.$oid] = false;
+                        delete dirties[$scope.selected._id.$oid];
                         $scope.loadNotes(true);
                     });
                 };
@@ -93,6 +93,16 @@ angular.module('notes')
                         return false;
                     } else
                         return dirties[note._id.$oid];
+                };
+                
+                $scope.isAnyDirty = function () {
+                    if (angular.isUndefined(dirties)) {
+                        return false;
+                    }
+                    
+                    console.log("cccc " + Object.keys(dirties).length);
+                    
+                    return Object.keys(dirties).length > 0;
                 };
 
                 $scope.loadNotes(true);

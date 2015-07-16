@@ -20,7 +20,7 @@
                 <span class="text-muted">Created on:</span> <span>{{ selected.date | date:'MMM-dd-yyyy H:mm' }}</span>
                 <div class="pull-right">
                     <a href="#" class="pull-right btn btn-sm btn-danger m-l-sm" ng-click="deleteNote()">Delete</a>
-                    <a href="#" class="pull-right btn btn-sm btn-info m-l-sm" ng-click="createNote()">New</a>
+                    <a href="#" class="pull-right btn btn-sm btn-info m-l-sm" ng-show="!isAnyDirty()" ng-click="createNote()">New</a>
                     <a href="#" class="pull-right btn btn-sm btn-warning m-l-sm" ng-show="isDirty(selected)" ng-click="updateNote()">Save</a>
                 </div>
             </div>
