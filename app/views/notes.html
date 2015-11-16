@@ -17,7 +17,7 @@
 
         <div class="col-md-9 b-t">
             <div class="b-b padder">
-                <span class="text-muted">Created on:</span> <span>{{ selected.date.$date | date:'MMM-dd-yyyy H:mm' }}</span>
+                <span>{{ selected.date.$date | date:'MMM-dd-yyyy H:mm' }}</span>
                 <div class="pull-right">
                     <a href="#" class="pull-right btn btn-sm btn-danger m-l-sm" ng-click="deleteNote()">Delete</a>
                     <a href="#" class="pull-right btn btn-sm btn-info m-l-sm" ng-show="!isAnyDirty()" ng-click="createNote()">New</a>

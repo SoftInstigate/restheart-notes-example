@@ -57,7 +57,7 @@ angular.module('notes')
                         return;
                     }
 
-                    $scope.selected.date = Date.now();
+                    $scope.selected.date = {'$date': Date.now()};
 
                     $scope.selected.put(null, {"If-Match": $scope.selected._etag.$oid}).then(function (res) {
                         delete dirties[$scope.selected._id.$oid];
