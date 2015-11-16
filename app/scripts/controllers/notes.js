@@ -69,8 +69,8 @@ angular.module('notes')
                     if (angular.isUndefined(n) || angular.isUndefined(n.content) || n.content.length === 0) {
                         return "Untitled";
                     } else {
-                        if (n.content.length > 30) {
-                            return n.content.substring(0, 30) + "...";
+                        if (n.content.length > 15) {
+                            return n.content.substring(0, 15) + "...";
                         } else {
                             return n.content;
                         }

@@ -1,31 +1,67 @@
 <div class="row">
     <div class="wrapper">
-        <div class="col-md-3 b-r b-t">
-            <div class="input-group padder">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-                <input type="text" class="form-control" placeholder="search" ng-model="query">
-            </div>
-            <div class="list-group padder">
-                <a ng-repeat="n in notes" class="list-group-item b-l-{{n.color}}" ng-class="n._id.$oid == selected._id.$oid ? 'hover': ''" ng-click="selectNote(n)">
-                    {{getTitle(n)}}
-                    <br>
-                    <i ng-show="isDirty(n)" class="glyphicon glyphicon-save pull-right m-r-sm"></i>
-                    <span class="text-muted text-sm">{{ n.date.$date | date:'MMM-dd-yyyy H:mm'}}</span>
-                </a>
+        <div class="col-xs-12 col-sm-3">
+
+            <div class="hidden-xs">
+                <div class="input-group padder">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" class="form-control" placeholder="search" ng-model="query">
+                </div>
+
+                <div class="list-group padder">
+                    <li ng-repeat="n in notes" class="list-group-item b-l-{{n.color}}" ng-class="n._id.$oid == selected._id.$oid ? 'btn-info': ''" ng-click="selectNote(n)">
+                        {{getTitle(n)}}
+                        <br>
+                        <i ng-show="isDirty(n)" class="glyphicon glyphicon-save pull-right m-r-sm"></i>
+                        <span class="text-muted text-sm">{{ n.date.$date | date:'MM/dd/yyyy H:mm'}}</span>
+                    </li>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-9 b-t">
-            <div class="b-b padder">
-                <span>{{ selected.date.$date | date:'MMM-dd-yyyy H:mm' }}</span>
-                <div class="pull-right">
-                    <a href="#" class="pull-right btn btn-sm btn-danger m-l-sm" ng-click="deleteNote()">Delete</a>
-                    <a href="#" class="pull-right btn btn-sm btn-info m-l-sm" ng-show="!isAnyDirty()" ng-click="createNote()">New</a>
-                    <a href="#" class="pull-right btn btn-sm btn-warning m-l-sm" ng-show="isDirty(selected)" ng-click="updateNote()">Save</a>
+        <div class="col-xs-12 col-sm-9 b-t b-l" style="height: 100%">
+            <div class="padder">
+                <div class="navbar navbar-default scrollMenu hidden-sm hidden-md hidden-lg" role="navigation" style="background: #f0f3f4; border: none">
+                    <div class="navbar-header b-b padder" >
+                        <span>
+                            <a href="#" class="btn btn-sm btn-danger m-l-sm" ng-click="deleteNote()">Delete</a>
+                            <a href="#" class="btn btn-sm btn-info m-l-sm" ng-show="!isAnyDirty()" ng-click="createNote()">New</a>
+                            <a href="#" class="btn btn-sm btn-warning m-l-sm" ng-show="isDirty(selected)" ng-click="updateNote()">Save</a>
+                        </span>
+
+                        <button type="button" class="navbar-toggle m-l-xs" data-toggle="collapse" data-target=".navbar-ex1-collapse" style="margin-top: 0; margin-bottom: 0;">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse" id="scrollTarget">
+                        <div class="input-group padder">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                            <input type="text" class="form-control" placeholder="search" ng-model="query">
+                        </div>
+
+                        <div class="list-group padder" style="padding-top: 0">
+                            <li ng-repeat="n in notes" class="list-group-item b-l-{{n.color}}" ng-class="n._id.$oid == selected._id.$oid ? 'btn-info': ''" ng-click="selectNote(n)">
+                                {{getTitle(n)}}
+                                <br>
+                                <i ng-show="isDirty(n)" class="glyphicon glyphicon-save pull-right m-r-sm"></i>
+                                <span class="text-muted text-sm">{{ n.date.$date | date:'MM/dd/yyyy H:mm'}}</span>
+                            </li>
+                        </div>
+                    </div>
                 </div>
+
+                <span class="hidden-xs">
+                    <span>{{ selected.date.$date | date:'MM/dd/yyyy H:mm' }}</span>
+
+                    <a href="#" class="btn btn-sm btn-danger m-l-xs" ng-click="deleteNote()">Delete</a>
+                    <a href="#" class="btn btn-sm btn-info m-l-xs" ng-show="!isAnyDirty()" ng-click="createNote()">New</a>
+                    <a href="#" class="btn btn-sm btn-warning m-l-xs" ng-show="isDirty(selected)" ng-click="updateNote()">Save</a>
+                </span>
             </div>
 
-            <textarea ng-disabled="selected ? false : true" class="padder no-radius no-borders no-border no-bg text-md" ng-model="selected.content" ng-change="setDirty()" style="width:100%; height: 100%"></textarea>
+            <textarea ng-disabled="selected ? false : true" class="b-t padder no-radius no-borders no-border no-bg text-md" ng-model="selected.content" ng-change="setDirty()" style="width:100%; height: 100%"></textarea>
         </div>
     </div>
 </div>

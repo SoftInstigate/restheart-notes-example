@@ -3977,7 +3977,8 @@ tbody.collapse.in {
       background-color: #888; }
   .navbar-default .navbar-collapse,
   .navbar-default .navbar-form {
-    border-color: #e7e7e7; }
+    border-color: #e7e7e7;
+    }
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     background-color: #e7e7e7;
     color: #555; }
@@ -5796,7 +5797,8 @@ button.close {
   .hidden-print {
     display: none !important; } }
 html, body, .override .col-md-3, .override .col-md-9 {
-  height: 100%; }
+  height: 100%;
+  }
 
 .override .wrapper {
   position: absolute;
@@ -5806,7 +5808,8 @@ html, body, .override .col-md-3, .override .col-md-9 {
 .override .col-md-3 {
   float: left;
   position: static;
-  overflow: auto; }
+  overflow: auto;
+  }
 
 .override .col-md-9 {
   position: static;
@@ -5830,10 +5833,12 @@ body {
   line-height: 1.42857143;
   color: #58666e;
   background-color: transparent;
-  padding: 0; }
+  padding: 0;
+  }
 
 .padder {
-  padding: 15px; }
+  padding: 15px;
+  }
 
 .browsehappy {
   margin: 0.2em 0;
