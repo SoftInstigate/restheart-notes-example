@@ -70,11 +70,7 @@ Run `bower install`. If Bower asks you for the AngularJS version, choose 1.3.0.
 
 	bower install
 
-Build the project
-
-	grunt build
-
-If you want to preview the web application, run `grunt serve`; after a while it should starts the default browser at [http://localhost:9000/#/signin](http://localhost:9000/#/signin)
+If you want to preview the web application, run `grunt serve`; after a while it should starts the default browser at [http://localhost:9000/#/signin](http://localhost:9000/#/signin).
 Of course, make sure you have already started RESTHeart as well.
 
 	grunt serve
