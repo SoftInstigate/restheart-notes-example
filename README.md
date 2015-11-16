@@ -86,3 +86,7 @@ For more information on RESTHeart security setting refer to the [documentation](
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
+
+<hr></hr>
+
+_Made with :heart: by [The SoftInstigate Team](http://www.softinstigate.com/). Follow us on [Twitter](https://twitter.com/softinstigate)_.
