@@ -62,11 +62,20 @@ Install [Grunt](http://gruntjs.com/getting-started) and [Bower](http://bower.io)
 
 	npm install -g bower grunt-cli
 
+Run `npm install` to install project dependencies
+
+	npm install
+
 Run `bower install`. If Bower asks you for the AngularJS version, choose 1.3.0.
 
 	bower install
 
-Finally run `grunt serve` for preview, after a while it should starts the default browser at [http://localhost:9000/#/signin](http://localhost:9000/#/signin)
+Build the project
+
+	grunt build
+
+If you want to preview the web application, run `grunt serve`; after a while it should starts the default browser at [http://localhost:9000/#/signin](http://localhost:9000/#/signin)
+Of course, make sure you have already started RESTHeart as well.
 
 	grunt serve
 
