@@ -34,6 +34,11 @@ Edit this line:
 Setting the IP (in this case 192.168.59.103, which should be the one with boot2docker) with the one of the restheart container; it might be the `localhost` or, if you are using boot2docker, you can retrive it with the command:
 
 	boot2docker ip
+	
+If you are using `docker-machine` and let's say the default VM is called "default" then
+
+	$ docker-machine ip default
+	192.168.99.100
 
 ## Create the data model
 
