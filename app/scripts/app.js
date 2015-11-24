@@ -10,10 +10,23 @@
  */
 
 /*
- * The below IP is valid for Boot2Docker only, otherwise it must be:
+ * Set below IP to point to RESTHeart
+ * 
+ * examples
+ * 
+ * if RESTHeart runs locally:
+ * 
  * var RESTHEART_URL = "http://localhost:8080";
+ * 
+ * if RESTHeart runs in a docker machine container:
+ * 
+ * var RESTHEART_URL = "http://[DOCKER_MACHINE_IP]:8080";
+ * 
+ * where DOCKER_MACHINE_IP can be retrived with following command:
+ * 
+ * $ docker-machine ip default
  */
-var RESTHEART_URL = "http://192.168.59.103:8080";
+var RESTHEART_URL = "http://localhost:8080";
 
 angular
         .module('notes', [
@@ -92,7 +105,7 @@ angular
                 return $window._;
             }
         ])
-
+        
         .config(['localStorageServiceProvider', function (localStorageServiceProvider) {
                 localStorageServiceProvider.setStorageType('sessionStorage');
                 localStorageServiceProvider.setPrefix('notes');
