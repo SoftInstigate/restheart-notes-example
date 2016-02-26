@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('notes')
-        .controller('MainCtrl', ['$state', 'AuthService', function ($state, AuthService) {
+        .controller('MainCtrl', ['$state', 'RhAuth', function ($state, RhAuth) {
                 // redirect to signin if not authenticated
-                if (!AuthService.isAuthenticated()) {
+                if (!RhAuth.isAuthenticated()) {
                     $state.go("signin");
                     return;
                 }

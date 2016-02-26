@@ -1,5 +1,5 @@
 angular.module('notes')
-        .controller('NotesCtrl', ['$scope', 'ApiRestangular', 'AuthService', '_', function ($scope, ApiRestangular, AuthService, _) {
+        .controller('NotesCtrl', ['$scope', 'Rh', 'RhAuth', '_', function ($scope, Rh, RhAuth, _) {
                 $scope.colors = ['primary', 'info', 'success', 'warning', 'danger', 'dark'];
                 $scope.selected;
                 var dirties = {};
@@ -20,13 +20,13 @@ angular.module('notes')
                         sort_by: "-date"
                     };
 
-                    var filter = getFilter($scope.query, AuthService.getSavedUserid());
+                    var filter = getFilter($scope.query, RhAuth.getUserid());
 
                     if (angular.isDefined(filter)) {
                         apiOptions.filter = filter;
                     }
 
-                    ApiRestangular.all('notes').getList(apiOptions).then(function (result) {
+                    Rh.all('notes').getList(apiOptions).then(function (result) {
                         $scope.notes = result;
                         $scope.isLoading = false;
                         if (angular.isDefined(selectFirst) && selectFirst) {
@@ -44,10 +44,10 @@ angular.module('notes')
                         content: 'New note',
                         color: $scope.colors[Math.floor((Math.random() * 3))],
                         date: {'$date': Date.now()},
-                        user: AuthService.getSavedUserid()
+                        user: RhAuth.getUserid()
                     };
 
-                    ApiRestangular.all("notes").post(note).then(function () {
+                    Rh.all("notes").post(note).then(function () {
                         $scope.loadNotes(true);
                     });
                 };
@@ -78,7 +78,7 @@ angular.module('notes')
                 };
 
                 $scope.deleteNote = function () {
-                    ApiRestangular.one("notes", $scope.selected._id.$oid).remove(null, {"If-Match": $scope.selected._etag.$oid}).then(function () {
+                    Rh.one("notes", $scope.selected._id.$oid).remove(null, {"If-Match": $scope.selected._etag.$oid}).then(function () {
                         $scope.loadNotes(true);
                     });
                 };
