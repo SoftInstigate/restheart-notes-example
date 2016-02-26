@@ -34,7 +34,7 @@ angular.module('notes')
                             resolve: {
                                 deps: ['$ocLazyLoad',
                                     function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/main.js');htt
+                                        return $ocLazyLoad.load('scripts/controllers/main.js');
                                     }
                                 ]
                             }
