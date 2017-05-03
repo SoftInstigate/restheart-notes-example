@@ -11,45 +11,28 @@ An example notes application built with RESTHeart, AngularJS and MongoDB.
 
 For detailed installation instructions refer to the [documentation](http://restheart.org/docs/get-up-and-running.html).
 
-However the quickest way is using **docker**:
+However the quickest way is using the **docker-compose.yml** in restheat's  distribution:
 
-	$ docker pull mongo
-	$ docker pull softinstigate/restheart
-	$ docker run -d --name mongodb mongo:3.0
-	$ docker run -d -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart
+https://github.com/SoftInstigate/restheart/tree/master/Docker
 
-After the docker mongodb and restheart containers are started in background, you can check the logs by issuing the `docker logs` command
+Clone the [restheart repo](https://github.com/SoftInstigate/restheart/) and cd into the Docker folder, then:
 
-	$ docker logs mongodb
-	$ docker logs restheart
+	$ docker-compose up -d
 
-Then you might need to adjust the RESTHEART_URL variable value in the following file:
+After the docker mongodb and restheart containers are started in background, you can check the logs:
 
-	app/scripts/app.js
-	
-Edit this line:
-
-	var RESTHEART_URL = "http://192.168.59.103:8080";
-
-Setting the IP (in this case 192.168.59.103, which should be the one with boot2docker) with the one of the restheart container; it might be the `localhost` or, if you are using boot2docker, you can retrive it with the command:
-
-	boot2docker ip
-	
-If you are using `docker-machine` and let's say the default VM is called "default" then
-
-	$ docker-machine ip default
-	192.168.99.100
+	$ docker-compose logs -f
 
 ## Create the data model
 
 We will be using the RESTHeart API with [httpie](http://httpie.org) (you can also use another http client such as curl)
 
-	$ http -a admin:changeit PUT http://192.168.59.103:8080/rhnedb descr="restheart notes example db"
+	$ http -a admin:changeit PUT http://localhost:8080/rhnedb descr="restheart notes example db"
 	
 	HTTP/1.1 201 Created
 	...
 	
-	$ http -a admin:changeit PUT http://192.168.59.103:8080/rhnedb/notes descr="notes collection"
+	$ http -a admin:changeit PUT http://localhost:8080/rhnedb/notes descr="notes collection"
 	
 	HTTP/1.1 201 Created
 	...
@@ -71,6 +54,11 @@ Run `npm install` to install project dependencies
 
 	npm install
 
+Optionally, install compass (you must have ruby properly installed in your system)
+
+	gem update --system
+	gem install compass
+
 Run `bower install`. If Bower asks you for the AngularJS version, choose 1.3.0.
 
 	bower install
@@ -79,6 +67,10 @@ If you want to preview the web application, run `grunt serve`; after a while it 
 Of course, make sure you have already started RESTHeart as well.
 
 	grunt serve
+
+If you don't have compass installed then you'll get an error message, in this case just use --force to continue.
+
+	grunt serve --force
 
 To login in the Web app, you can use the **admin** user with password **changeit**
 
