@@ -59,7 +59,7 @@ Optionally, install compass (you must have ruby properly installed in your syste
 	gem update --system
 	gem install compass
 
-Run `bower install`. If Bower asks you for the AngularJS version, choose 1.3.0.
+Run `bower install`. If Bower asks you for the AngularJS version, choose the most recent.
 
 	bower install
 
