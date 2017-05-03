@@ -40,21 +40,17 @@ We will be using the RESTHeart API with [httpie](http://httpie.org) (you can als
 
 ## Start the Web app
 
-First of all you have to install Node.js for your system [https://nodejs.org](https://nodejs.org).
+First of all you need Node.js for your system [https://nodejs.org](https://nodejs.org).
 
-Then check you have the latest `npm` installed
-
-	npm update -g npm
-
-Install [Grunt](http://gruntjs.com/getting-started) and [Bower](http://bower.io) tools
+Then install [Grunt](http://gruntjs.com/getting-started) and [Bower](http://bower.io):
 
 	npm install -g bower grunt-cli
 
-Run `npm install` to install project dependencies
+Run `npm install` to install project dependencies:
 
 	npm install
 
-Optionally, install compass (you must have ruby properly installed in your system)
+Optionally, install compass (you must have ruby properly installed in your system):
 
 	gem update --system
 	gem install compass
@@ -63,18 +59,15 @@ Run `bower install`. If Bower asks you for the AngularJS version, choose the mos
 
 	bower install
 
-If you want to preview the web application, run `grunt serve`; after a while it should starts the default browser at [http://localhost:9000/#/signin](http://localhost:9000/#/signin).
-Of course, make sure you have already started RESTHeart as well.
+If you want to preview the web application, run `grunt serve`; after few seconds it should open the default browser at [http://localhost:9000/](http://localhost:9000/).
 
 	grunt serve
 
-If you don't have compass installed then you'll get an error message, in this case just use --force to continue.
-
-	grunt serve --force
+If you don't have compass installed then you'll get an error message, in this case just use `grunt serve --force` to continue.
 
 To login in the Web app, you can use the **admin** user with password **changeit**
 
-For more information on RESTHeart security setting refer to the [documentation](http://restheart.org/docs/security.html).
+For more information on RESTHeart' security refer to the [documentation](http://restheart.org/docs/security.html).
 
 ## Testing
 
